@@ -1,0 +1,32 @@
+!!!
+%html{ lang: I18n.locale.to_s }
+  %head
+    %meta{ charset: "utf-8" }
+    %meta{ name: "viewport", content: "width=device-width, initial-scale=1, shrink-to-fit=no" }
+    %title
+      = t("app_name")
+      - if content_for?(:title)
+        &ndash;
+        = yield(:title)
+
+    = csrf_meta_tags
+    = csp_meta_tag
+
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_pack_tag 'application', 'data-turbolinks-track': 'reload'
+
+  %body.pt-5
+    = render "shared/navbar"
+    .container.pt-5
+      - if notice.present?
+        .alert.alert-success.alert-dismissible.fade.show{ role: "alert" }
+          = notice
+          %button.close{ type: "button", data: { dismiss: "alert" }, "aria-label": "Close" }
+            %span{ "aria-hidden": "true" } &times;
+
+      - if alert.present?
+        .alert.alert-danger.alert-dismissible.fade.show{ role: "alert" }
+          = alert
+          %button.close{ type: "button", data: { dismiss: "alert" }, "aria-label": "Close" }
+            %span{ "aria-hidden": "true" } &times;
+      = yield
