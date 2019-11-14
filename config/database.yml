@@ -7,14 +7,14 @@ default: &default
 
 development:
   <<: *default
-  database: skeleton_development
+  database: bm_inventory_development
 
 test:
   <<: *default
-  database: skeleton_test
+  database: bm_inventory_test
 
 production:
   <<: *default
-  database: skeleton_production
-  username: skeleton_production
-  password: <%= ENV['SKELETON_PRODUCTION_DATABASE_PASSWORD'] %>
+  database: bm_inventory_production
+  username: bm_inventory_production
+  password: <%= ENV['BM_INVENTORY_PRODUCTION_DATABASE_PASSWORD'] %>
