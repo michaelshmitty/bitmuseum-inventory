@@ -1,7 +1,7 @@
 require "rails_helper"
 
 RSpec.feature "User authentication" do
-  let!(:user) { create(:confirmed_user, email: "user@example.com", password: "verysecret") }
+  let!(:user) { create(:user, email: "user@example.com", password: "verysecret") }
 
   scenario "User signs in with invalid credentials" do
     visit new_user_session_path

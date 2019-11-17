@@ -10,8 +10,5 @@ FactoryBot.define do
     end
 
     factory :invalid_user, traits: [:invalid]
-    factory :confirmed_user, parent: :user do
-      after(:create) { |user| user.confirm }
-    end
   end
 end
