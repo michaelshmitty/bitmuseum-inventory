@@ -7,7 +7,7 @@
 .row
   .col
     = paginate @items, theme: 'twitter-bootstrap-4', pagination_class: "justify-content-center"
-  .col-3
+  .col-3.text-right
     %small= page_entries_info @items
 
 .row
@@ -26,5 +26,5 @@
 .row
   .col
     = paginate @items, theme: 'twitter-bootstrap-4', pagination_class: "justify-content-center"
-  .col-3
+  .col-3.text-right
     %small= page_entries_info @items
