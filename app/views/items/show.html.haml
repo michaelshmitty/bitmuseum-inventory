@@ -1,11 +1,13 @@
 %h1= Item.model_name.human
 
-.row
+.row.mb-3
   .col
     %h3= @item.name
     %h5= @item.year
 
-    %p= @item.description
+    .card
+      .card-body
+        = GitHub::Markup.render_s(GitHub::Markups::MARKUP_MARKDOWN, @item.description).html_safe
 
 .row
   .col

@@ -19,6 +19,8 @@ gem 'ransack', github: 'activerecord-hackery/ransack'
 gem 'pundit', '~> 2.1.0'
 gem 'aasm', '~> 5.0.6'
 gem 'breadcrumbs_on_rails', '~> 3.0.1'
+gem 'commonmarker'
+gem 'github-markup'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
