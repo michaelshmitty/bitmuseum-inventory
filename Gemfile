@@ -18,6 +18,7 @@ gem 'bootstrap-kaminari-views', git: 'https://github.com/kalashnikovisme/bootstr
 gem 'ransack', github: 'activerecord-hackery/ransack'
 gem 'pundit', '~> 2.1.0'
 gem 'aasm', '~> 5.0.6'
+gem 'breadcrumbs_on_rails', '~> 3.0.1'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -25,6 +26,7 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.9.0'
   gem 'rails-controller-testing'
   gem 'dotenv-rails'
+  gem 'faker'
 end
 
 group :development do

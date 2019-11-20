@@ -18,6 +18,10 @@ RSpec.describe User, type: :model do
     it { should have_db_index(:reset_password_token).unique }
   end
 
+  describe 'associations' do
+    it { should have_many(:items).dependent(:destroy) }
+  end
+
   describe 'methods' do
     describe "#full_name" do
       it "returns the concatenated first_name and last_name if they are set" do

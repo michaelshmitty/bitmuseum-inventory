@@ -1,0 +1,15 @@
+%h1= Item.model_name.human
+
+.row
+  .col
+    %h3= @item.name
+    %h5= @item.year
+
+    %p= @item.description
+
+.row
+  .col
+    - if policy(@item).edit?
+      = link_to "Edit", [:edit, @item], class: "btn btn-warning"
+    - if policy(@item).destroy?
+      = link_to "Delete", @item, class: "btn btn-danger", method: :delete, data: { confirm: "Are you sure?" }

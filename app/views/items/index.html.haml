@@ -1,0 +1,31 @@
+%h1 Items
+
+.row.my-4.text-right
+  .col
+    = link_to "New item", [:new, :item], class: "btn btn-primary"
+
+.row
+  .col
+    = paginate @items, theme: 'twitter-bootstrap-4', pagination_class: "justify-content-center"
+  .col-3
+    %small= page_entries_info @items
+
+.row
+  .col
+    %table.table
+      %thead
+        %tr
+          %th{ scope: "col" }= sort_link(@q, :id)
+          %th{ scope: "col" }= sort_link(@q, :name)
+          %th{ scope: "col" }= sort_link(@q, :year)
+          %th{ scope: "col" }= sort_link(@q, :user, )
+          %th{ scope: "col" }= sort_link(@q, :description)
+
+      %tbody
+        = render @items
+
+.row
+  .col
+    = paginate @items, theme: 'twitter-bootstrap-4', pagination_class: "justify-content-center"
+  .col-3
+    %small= page_entries_info @items
