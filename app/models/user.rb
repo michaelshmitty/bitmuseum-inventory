@@ -5,6 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :trackable, :lockable
 
+  has_many :items, dependent: :destroy
+
   def full_name
     full_name = []
     full_name << first_name if first_name.present?

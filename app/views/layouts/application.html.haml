@@ -29,4 +29,6 @@
           = alert
           %button.close{ type: "button", data: { dismiss: "alert" }, "aria-label": "Close" }
             %span{ "aria-hidden": "true" } &times;
+      .row
+        .col.text-right= render_breadcrumbs
       = yield

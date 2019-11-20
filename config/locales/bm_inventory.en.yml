@@ -1,12 +1,6 @@
 en:
-  app_name: "Bitmuseum inventory app"
+  app_name: "Bitmuseum Inventory"
   activerecord:
-    models:
-      user:
-        one: "User"
-        other: "Users"
     attributes:
-      user:
-        first_name: "First name"
-        last_name: "Last name"
-        full_name: "Name"
+      item:
+        id: "ID"
