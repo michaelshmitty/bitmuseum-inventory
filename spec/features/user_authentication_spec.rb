@@ -15,7 +15,7 @@ RSpec.feature "User authentication" do
   scenario "User signs in with valid credentials" do
     sign_in_with user.email, "verysecret"
 
-    expect(page).to have_text("Home")
+    expect(page).to have_text("Items")
   end
 
   scenario "User signs out" do
@@ -29,7 +29,7 @@ RSpec.feature "User authentication" do
     sign_in_with user.email, "verysecret"
     visit edit_user_registration_path
 
-    expect(page).to have_text("Edit User")
+    expect(page).to have_text("Settings")
 
     fill_in "user_first_name", with: "Jane"
     fill_in "user_last_name", with: "Doe"
