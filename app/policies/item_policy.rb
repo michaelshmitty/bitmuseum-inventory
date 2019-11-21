@@ -33,4 +33,8 @@ class ItemPolicy
   def destroy?
     item.user == user
   end
+
+  def destroy_image?
+    item.user == user
+  end
 end

@@ -6,7 +6,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :items
+  resources :items do
+    member do
+      delete :destroy_image
+    end
+  end
 
 
   root to: redirect("/users/sign_in")

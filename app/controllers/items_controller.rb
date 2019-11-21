@@ -57,6 +57,13 @@ class ItemsController < ApplicationController
     redirect_to :items
   end
 
+  def destroy_image
+    @item = current_user.items.find(params[:id])
+    authorize @item
+
+    @item.images.find_by_id(params[:image_id]).purge
+    redirect_to [:edit, @item]
+  end
 
   private
 
@@ -69,7 +76,8 @@ class ItemsController < ApplicationController
       require(:item).
       permit(:name,
              :description,
-             :year
+             :year,
+             images: []
       )
   end
 end
