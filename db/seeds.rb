@@ -9,7 +9,7 @@ user = User.where(email: "user@example.com").first_or_create!(
 )
 
 random_users = []
-10.times do
+3.times do
   random_users << User.where(email: Faker::Internet.email).first_or_create!(
     first_name: Faker::Name.first_name,
     last_name: Faker::Name.last_name,
@@ -17,7 +17,7 @@ random_users = []
   )
 end
 
-200.times do
+10.times do
   Item.create!(
     user: random_users.sample,
     name: Faker::Commerce.product_name,

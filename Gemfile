@@ -21,6 +21,8 @@ gem 'aasm', '~> 5.0.6'
 gem 'breadcrumbs_on_rails', '~> 3.0.1'
 gem 'commonmarker'
 gem 'github-markup'
+gem 'aws-sdk-s3', require: false
+gem 'image_processing', '~> 1.2'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

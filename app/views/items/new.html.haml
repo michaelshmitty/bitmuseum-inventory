@@ -2,13 +2,4 @@
   New
   = Item.model_name.human
 
-= simple_form_for @item do |f|
-  .row
-    .col-4
-      = f.input :name, as: :string
-      = f.input :year, as: :string
-  .row
-    .col-8
-      = f.input :description, input_html: { rows: 15 }
-      = f.button :submit, class: "btn btn-primary"
-      = link_to "Cancel", @item, class: "btn btn-secondary"
+= render partial: "form", locals: { item: @item }

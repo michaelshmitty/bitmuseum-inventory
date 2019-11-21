@@ -1,0 +1,30 @@
+= simple_form_for item do |f|
+  .row
+    .col
+      = f.input :name, as: :string
+      = f.input :year, as: :string
+      = f.input :images, as: :file, input_html: { multiple: true }
+
+    .col
+      = f.input :description, input_html: { rows: 15 }, hint: "Markdown supported"
+
+  .row
+    .col
+      = f.button :submit, class: "btn btn-primary"
+      = link_to "Cancel", item, class: "btn btn-secondary"
+
+- if item.images.attached?
+  %h3.mt-4 Attached images
+  .container.bg-light.my-3
+    - item.images.in_groups_of(4) do |row_images|
+      .row.d-flex.flex-wrap.align-items-center
+        - row_images.each do |image|
+          .col-md-3.py-4
+            - if image
+              .row
+                .col
+                  = link_to image_tag(image.variant(resize_to_fit: [250, 250]), class: "img-fluid img-thumbnail d-block mx-auto"), image
+              - if policy(@item).destroy_image?
+                .row.mt-1
+                  .col.text-center
+                    = link_to fa_icon("trash", text: "Delete"), [:destroy_image, @item, image_id: image.id], method: :delete, data: { confirm: "Sure?" }, class: "btn btn-sm btn-danger"
