@@ -1,6 +1,9 @@
 require 'faker'
 
 User.destroy_all
+Category.destroy_all
+
+computer_category = Category.create!(name: "Computers")
 
 user = User.where(email: "user@example.com").first_or_create!(
   first_name: "John",

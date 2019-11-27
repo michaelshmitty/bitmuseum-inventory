@@ -1,0 +1,8 @@
+.row
+  .col-8
+    %h1= @category.name
+  .col.text-right.pt-3
+    - if policy(@category).edit?
+      = link_to fa_icon("pen", text: "Edit"), [:edit, @category], class: "btn btn-warning"
+    - if policy(@category).destroy?
+      = link_to fa_icon("trash", text: "Delete"), @category, class: "btn btn-danger", method: :delete, data: { confirm: "Are you sure?" }
