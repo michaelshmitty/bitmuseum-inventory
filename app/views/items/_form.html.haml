@@ -1,7 +1,8 @@
 = simple_form_for item do |f|
   .row
     .col
-      = f.input :name, as: :string
+      = f.association :category, include_blank: false
+      = f.input :name, as: :string, autofocus: true
       = f.input :year, as: :string
       = f.input :images, as: :file, input_html: { multiple: true }
 

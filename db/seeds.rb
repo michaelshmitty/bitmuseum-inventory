@@ -22,6 +22,7 @@ end
 
 10.times do
   Item.create!(
+    category: computer_category,
     user: random_users.sample,
     name: Faker::Commerce.product_name,
     year: Faker::Date.between(from: 40.years.ago, to: 10.years.ago).year,

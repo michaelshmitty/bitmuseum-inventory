@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
   def index
     @q = Item.ransack(params[:q])
     @q.sorts = "year ASC" if @q.sorts.empty?
-    @items = @q.result(distinct: true).page(params[:page])
+    @items = @q.result.page(params[:page])
     authorize @items
   end
 
@@ -74,7 +74,8 @@ class ItemsController < ApplicationController
   def item_params
     params.
       require(:item).
-      permit(:name,
+      permit(:category_id,
+             :name,
              :description,
              :year,
              images: []
