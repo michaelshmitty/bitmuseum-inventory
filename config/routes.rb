@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :categories
   resources :items do
     member do
       delete :destroy_image

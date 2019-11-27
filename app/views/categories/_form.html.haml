@@ -1,0 +1,9 @@
+= simple_form_for category do |f|
+  .row
+    .col-4
+      = f.input :name, as: :string, autofocus: true
+
+  .row
+    .col
+      = f.button :submit, class: "btn btn-primary"
+      = link_to "Cancel", category, class: "btn btn-secondary"
