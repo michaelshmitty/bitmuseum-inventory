@@ -15,6 +15,12 @@
             = Item.model_name.human.pluralize
             - if active
               %span.sr-only (current)
+        - active = controller.controller_name == "categories" ? "active" : nil
+        %li.nav-item{ class: active }
+          = link_to :categories, class: "nav-link" do
+            = Category.model_name.human.pluralize
+            - if active
+              %span.sr-only (current)
 
       %ul.navbar-nav.ml-auto
         %li.nav-item.dropdown

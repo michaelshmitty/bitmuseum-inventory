@@ -11,6 +11,9 @@
   .col
     %h3= @item.name
     %h5= @item.year
+    %h6
+      Category:
+      = @item.category.name
 
     - if @item.description.present?
       .card

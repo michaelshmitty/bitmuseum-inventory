@@ -1,4 +1,4 @@
-%h1 Items
+%h1= Item.model_name.human.pluralize
 
 .row.my-4.text-right
   .col
@@ -17,6 +17,7 @@
         %tr
           %th{ scope: "col" }= sort_link(@q, :id)
           %th{ scope: "col" }= sort_link(@q, :name)
+          %th{ scope: "col" }= sort_link(@q, :category_name)
           %th{ scope: "col" }= sort_link(@q, :year)
           %th{ scope: "col" }= sort_link(@q, :user, )
 
