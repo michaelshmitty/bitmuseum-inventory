@@ -110,6 +110,14 @@ Rails.application.configure do
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
 
+  # NOTE(m): Exception notification
+  Rails.application.config.middleware.use ExceptionNotification::Rack,
+  email: {
+    email_prefix: '[Bitmuseum Inventory Exception] ',
+    sender_address: %{"Bitmuseum Exception Notifier" <bounces@m.bitmuseum.be>},
+    exception_recipients: ENV.fetch('BM_INVENTORY_EXCEPTION_NOTIFICATION_RECIPIENT')
+  }
+
   # NOTE(m): ActionMailer configuration
   config.action_mailer.smtp_settings = {
     port: ENV['MAILGUN_SMTP_PORT'],
