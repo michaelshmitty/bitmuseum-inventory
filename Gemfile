@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.5'
+ruby '2.6.1'
 
 gem 'rails', '~> 6.0.0'
 gem 'haml', '~> 5.1.2'
@@ -42,6 +42,9 @@ group :development do
   gem 'letter_opener', '~> 1.7.0'
   gem 'guard', '~> 2.16.1'
   gem 'guard-rspec', '~> 4.7.3', require: false
+  gem 'capistrano', '~> 3.11.2'
+  gem 'capistrano-rails', '~> 1.4.0'
+  gem 'capistrano-rvm', '~> 0.1.2'
 end
 
 group :test do
@@ -51,8 +54,4 @@ group :test do
   gem 'shoulda-matchers', '~> 4.1.2'
   gem 'email_spec'
   gem 'database_cleaner'
-end
-
-group :production do
-  gem 'rack-timeout', '~> 0.5.2'
 end
