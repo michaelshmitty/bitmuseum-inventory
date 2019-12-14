@@ -120,11 +120,11 @@ Rails.application.configure do
 
   # NOTE(m): ActionMailer configuration
   config.action_mailer.smtp_settings = {
-    port: Rails.application.credentials.mailgun.smtp_port,
-    address: Rails.application.credentials.mailgun.smtp_server,
-    user_name: Rails.application.credentials.mailgun.smtp_login,
-    password: Rails.application.credentials.mailgun.smtp_password,
-    domain: Rails.application.credentials.mailgun.smtp_domain,
+    port: Rails.application.credentials.mailgun[:smtp_port],
+    address: Rails.application.credentials.mailgun[:smtp_server],
+    user_name: Rails.application.credentials.mailgun[:smtp_login],
+    password: Rails.application.credentials.mailgun[:smtp_password],
+    domain: Rails.application.credentials.mailgun[:smtp_domain],
     authentication: :plain,
   }
   config.action_mailer.delivery_method = :smtp
