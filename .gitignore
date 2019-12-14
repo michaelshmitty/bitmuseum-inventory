@@ -37,3 +37,5 @@ yarn-debug.log*
 spec/examples.txt
 .env
 TODO
+
+/config/credentials/production.key
