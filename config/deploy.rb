@@ -5,7 +5,7 @@ set :repo_url, "git@github.com:michaelshmitty/bitmuseum-inventory.git"
 set :branch, "master"
 set :deploy_to, "/home/rails/bitmuseum-inventory"
 set :default_env, rvm_bin_path: "~/.rvm/bin"
-set :linked_files, %w(config/database.yml)
+set :linked_files, %w(config/database.yml config/credentials/production.key)
 set :linked_dirs, %w(log tmp/pids tmp/cache tmp/sockets public/system)
 set :log_level, :info
 
