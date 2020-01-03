@@ -15,6 +15,7 @@ RSpec.describe Item, type: :model do
   describe 'database indexes' do
     it { should have_db_index(:user_id) }
     it { should have_db_index(:category_id) }
+    it { should have_db_index(:brand_id) }
     it { should have_db_index(:name) }
     it { should have_db_index(:aasm_state) }
   end
@@ -22,6 +23,7 @@ RSpec.describe Item, type: :model do
   describe 'associations' do
     it { should belong_to(:user) }
     it { should belong_to(:category) }
+    it { should belong_to(:brand) }
   end
 
   describe 'validations' do
