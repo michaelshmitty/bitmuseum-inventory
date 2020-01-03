@@ -1,0 +1,28 @@
+.row.mb-5
+  .col-8
+    %h1= @brand.name
+
+  .col.text-right.pt-3
+    - if policy(@brand).edit?
+      = link_to fa_icon("pen", text: "Edit"), [:edit, @brand], class: "btn btn-warning"
+    - if policy(@brand).destroy?
+      = link_to fa_icon("trash", text: "Delete"), @brand, class: "btn btn-danger", method: :delete, data: { confirm: "Are you sure?" }
+
+%h2= Item.model_name.human.pluralize
+.row
+  .col
+    %table.table
+      %thead
+        %tr
+          %th{ scope: "col" }= Item.human_attribute_name(:id)
+          %th{ scope: "col" }= Item.human_attribute_name(:name)
+          %th{ scope: "col" }= Item.human_attribute_name(:year)
+          %th{ scope: "col" }= Item.human_attribute_name(:user)
+
+      %tbody
+        - @brand.items.each do |item|
+          %tr
+            %td= link_to item.id, item
+            %td= link_to item.name, item
+            %td= item.year
+            %td= item.user.first_name

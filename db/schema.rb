@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_27_210620) do
+ActiveRecord::Schema.define(version: 2020_01_03_223423) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,10 +36,18 @@ ActiveRecord::Schema.define(version: 2019_11_27_210620) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
+  create_table "brands", force: :cascade do |t|
+    t.text "name", default: "", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "items_count", default: 0, null: false
+  end
+
   create_table "categories", force: :cascade do |t|
     t.text "name", default: "", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.integer "items_count", default: 0, null: false
   end
 
   create_table "items", force: :cascade do |t|
@@ -50,6 +58,14 @@ ActiveRecord::Schema.define(version: 2019_11_27_210620) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "category_id", null: false
+    t.text "model_number"
+    t.text "serial_number"
+    t.string "authenticity"
+    t.text "location"
+    t.string "aasm_state"
+    t.integer "brand_id", null: false
+    t.index ["aasm_state"], name: "index_items_on_aasm_state"
+    t.index ["brand_id"], name: "index_items_on_brand_id"
     t.index ["category_id"], name: "index_items_on_category_id"
     t.index ["name"], name: "index_items_on_name"
     t.index ["user_id"], name: "index_items_on_user_id"
@@ -79,6 +95,7 @@ ActiveRecord::Schema.define(version: 2019_11_27_210620) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "items", "brands"
   add_foreign_key "items", "categories"
   add_foreign_key "items", "users"
 end

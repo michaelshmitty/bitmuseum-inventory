@@ -110,15 +110,23 @@ Rails.application.configure do
   # config.active_record.database_resolver = ActiveRecord::Middleware::DatabaseSelector::Resolver
   # config.active_record.database_resolver_context = ActiveRecord::Middleware::DatabaseSelector::Resolver::Session
 
+  # NOTE(m): Exception notification
+  Rails.application.config.middleware.use ExceptionNotification::Rack,
+  email: {
+    email_prefix: '[Bitmuseum Inventory Exception] ',
+    sender_address: %{"Bitmuseum Exception Notifier" <bounces@m.bitmuseum.be>},
+    exception_recipients: Rails.application.credentials.exception_notification_recipient
+  }
+
   # NOTE(m): ActionMailer configuration
   config.action_mailer.smtp_settings = {
-    port: ENV['MAILGUN_SMTP_PORT'],
-    address: ENV['MAILGUN_SMTP_SERVER'],
-    user_name: ENV['MAILGUN_SMTP_LOGIN'],
-    password: ENV['MAILGUN_SMTP_PASSWORD'],
-    domain: ENV['BM_INVENTORY_SMTP_DOMAIN'],
+    port: Rails.application.credentials.mailgun[:smtp_port],
+    address: Rails.application.credentials.mailgun[:smtp_server],
+    user_name: Rails.application.credentials.mailgun[:smtp_login],
+    password: Rails.application.credentials.mailgun[:smtp_password],
+    domain: Rails.application.credentials.mailgun[:smtp_domain],
     authentication: :plain,
   }
   config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_url_options = { host: ENV.fetch('BM_INVENTORY_DEFAULT_URL_HOST') }
+  config.action_mailer.default_url_options = { host: Rails.application.credentials.default_url_host }
 end

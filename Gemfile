@@ -5,7 +5,7 @@ ruby '2.6.5'
 
 gem 'rails', '~> 6.0.0'
 gem 'haml', '~> 5.1.2'
-gem 'puma', '~> 4.2.1'
+gem 'puma', '~> 4.3.1'
 gem 'sass-rails', '~> 5'
 gem 'webpacker', '~> 4.0'
 gem 'turbolinks', '~> 5'
@@ -23,6 +23,7 @@ gem 'commonmarker'
 gem 'github-markup'
 gem 'aws-sdk-s3', require: false
 gem 'image_processing', '~> 1.2'
+gem 'exception_notification'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
@@ -41,6 +42,9 @@ group :development do
   gem 'letter_opener', '~> 1.7.0'
   gem 'guard', '~> 2.16.1'
   gem 'guard-rspec', '~> 4.7.3', require: false
+  gem 'capistrano', '~> 3.11.2'
+  gem 'capistrano-rails', '~> 1.4.0'
+  gem 'capistrano-rvm', '~> 0.1.2'
 end
 
 group :test do
@@ -50,8 +54,4 @@ group :test do
   gem 'shoulda-matchers', '~> 4.1.2'
   gem 'email_spec'
   gem 'database_cleaner'
-end
-
-group :production do
-  gem 'rack-timeout', '~> 0.5.2'
 end

@@ -10,6 +10,23 @@ module ApplicationHelper
     icon_join(icon, text, right_icon)
   end
 
+  def badge_state(state)
+    case state
+    when :unknown
+      "badge-secondary"
+    when "working"
+      "badge-success"
+    when "needs_cleaning"
+      "badge-info"
+    when "needs_repair"
+      "badge-warning"
+    when "broken"
+      "badge-danger"
+    else
+      "badge-secondary"
+    end
+  end
+
 
   private
 

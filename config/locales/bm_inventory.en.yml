@@ -4,3 +4,9 @@ en:
     attributes:
       item:
         id: "ID"
+        aasm_state: "State"
+        brand: "Brand"
+      category:
+        items_count: "# Items"
+      brand:
+        items_count: "# Items"

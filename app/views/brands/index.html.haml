@@ -1,0 +1,28 @@
+%h1= Brand.model_name.human.pluralize
+
+.row.my-4.text-right
+  .col
+    = link_to fa_icon("plus", text: "New brand"), [:new, :brand], class: "btn btn-primary"
+
+.row
+  .col
+    = paginate @brands, theme: 'twitter-bootstrap-4', pagination_class: "justify-content-center"
+  .col-3.text-right.py-2
+    %small= page_entries_info @brands
+
+.row
+  .col
+    %table.table
+      %thead
+        %tr
+          %th{ scope: "col" }= sort_link(@q, :name)
+          %th{ scope: "col" }= sort_link(@q, :items_count)
+
+      %tbody
+        = render @brands
+
+.row.mb-5
+  .col
+    = paginate @brands, theme: 'twitter-bootstrap-4', pagination_class: "justify-content-center"
+  .col-3.text-right
+    %small= page_entries_info @brands

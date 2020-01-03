@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Category, type: :model do
+RSpec.describe Brand, type: :model do
   describe 'database columns' do
     it { should have_db_column(:name).of_type(:text).with_options(default: "", null: false) }
     it { should have_db_column(:items_count).of_type(:integer).with_options(default: 0, null: false) }

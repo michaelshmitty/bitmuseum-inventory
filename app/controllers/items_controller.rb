@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
 
   def index
     @q = Item.ransack(params[:q])
-    @q.sorts = "year ASC" if @q.sorts.empty?
+    @q.sorts = "brand_name asc" if @q.sorts.empty?
     @items = @q.result.page(params[:page])
     authorize @items
   end
@@ -75,9 +75,15 @@ class ItemsController < ApplicationController
     params.
       require(:item).
       permit(:category_id,
+             :brand_id,
              :name,
              :description,
              :year,
+             :model_number,
+             :serial_number,
+             :authenticity,
+             :location,
+             :aasm_state,
              images: []
       )
   end

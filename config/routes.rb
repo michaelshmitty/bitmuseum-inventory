@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   end
 
   resources :categories
+  resources :brands
   resources :items do
     member do
       delete :destroy_image
