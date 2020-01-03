@@ -4,8 +4,8 @@ class Item < ApplicationRecord
   include AASM
 
   belongs_to :user
-  belongs_to :category
-  belongs_to :brand
+  belongs_to :category, counter_cache: true
+  belongs_to :brand, counter_cache: true
   has_many_attached :images
 
   validates :name, presence: true
