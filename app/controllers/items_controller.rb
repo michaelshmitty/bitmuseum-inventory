@@ -3,7 +3,7 @@ class ItemsController < ApplicationController
 
   def index
     @q = Item.ransack(params[:q])
-    @q.sorts = "name ASC" if @q.sorts.empty?
+    @q.sorts = "brand_name asc" if @q.sorts.empty?
     @items = @q.result.page(params[:page])
     authorize @items
   end
