@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_03_215415) do
+ActiveRecord::Schema.define(version: 2020_01_03_220616) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,7 +61,7 @@ ActiveRecord::Schema.define(version: 2020_01_03_215415) do
     t.string "authenticity"
     t.text "location"
     t.string "aasm_state"
-    t.bigint "brand_id"
+    t.integer "brand_id", null: false
     t.index ["aasm_state"], name: "index_items_on_aasm_state"
     t.index ["brand_id"], name: "index_items_on_brand_id"
     t.index ["category_id"], name: "index_items_on_category_id"
