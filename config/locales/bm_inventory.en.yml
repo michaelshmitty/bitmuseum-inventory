@@ -4,3 +4,4 @@ en:
     attributes:
       item:
         id: "ID"
+        aasm_state: "State"

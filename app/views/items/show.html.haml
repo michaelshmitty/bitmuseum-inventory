@@ -1,24 +1,67 @@
-.row
+.row.mb-3
   .col-8
     %h1= Item.model_name.human
   .col.text-right.pt-3
     - if policy(@item).edit?
-      = link_to fa_icon("pen", text: "Edit"), [:edit, @item], class: "btn btn-warning"
+      = link_to fa_icon("pen", text: "Edit"), [:edit, @item], class: "btn btn-warning btn-sm"
     - if policy(@item).destroy?
-      = link_to fa_icon("trash", text: "Delete"), @item, class: "btn btn-danger", method: :delete, data: { confirm: "Are you sure?" }
-
+      = link_to fa_icon("trash", text: "Delete"), @item, class: "btn btn-danger btn-sm", method: :delete, data: { confirm: "Are you sure?" }
+%hr
 .row.mb-3
-  .col
-    %h3= @item.name
-    %h5= @item.year
-    %h6
-      Category:
+  .col-md
+    %p
+      %b
+        = succeed ":" do
+          = Item.human_attribute_name(:category)
       = @item.category.name
 
-    - if @item.description.present?
-      .card
-        .card-body
-          = GitHub::Markup.render_s(GitHub::Markups::MARKUP_MARKDOWN, @item.description).html_safe
+    %p
+      %b
+        = succeed ":" do
+          = Item.human_attribute_name(:name)
+      = @item.name
+
+    .row
+      .col
+        %p
+          %b
+            = succeed ":" do
+              = Item.human_attribute_name(:year)
+          = @item.year
+        %p
+          %b
+            = succeed ":" do
+              = Item.human_attribute_name(:authenticity)
+          = @item.authenticity.titleize
+      .col
+        %p
+          %b
+            = succeed ":" do
+              = Item.human_attribute_name(:model_number)
+          = @item.model_number
+        %p
+          %b
+            = succeed ":" do
+              = Item.human_attribute_name(:serial_number)
+          = @item.serial_number
+
+  .col-md
+    %p
+      %b
+        = succeed ":" do
+          = Item.human_attribute_name(:aasm_state)
+      %span.badge{class: badge_state(@item.aasm_state)}= @item.aasm_state.titleize
+    %p
+      %b
+        = succeed ":" do
+          = Item.human_attribute_name(:location)
+      = @item.location
+    %p
+      %b
+        = succeed ":" do
+          = Item.human_attribute_name(:description)
+      - if @item.description.present?
+        = GitHub::Markup.render_s(GitHub::Markups::MARKUP_MARKDOWN, @item.description).html_safe
 
 .container.bg-light.my-3
   - @item.images.in_groups_of(4) do |row_images|

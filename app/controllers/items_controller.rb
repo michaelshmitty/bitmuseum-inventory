@@ -78,6 +78,11 @@ class ItemsController < ApplicationController
              :name,
              :description,
              :year,
+             :model_number,
+             :serial_number,
+             :authenticity,
+             :location,
+             :aasm_state,
              images: []
       )
   end
