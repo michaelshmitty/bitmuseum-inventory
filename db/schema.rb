@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_27_210620) do
+ActiveRecord::Schema.define(version: 2020_01_03_203418) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,12 @@ ActiveRecord::Schema.define(version: 2019_11_27_210620) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "category_id", null: false
+    t.text "model_number"
+    t.text "serial_number"
+    t.string "authenticity"
+    t.text "location"
+    t.string "aasm_state"
+    t.index ["aasm_state"], name: "index_items_on_aasm_state"
     t.index ["category_id"], name: "index_items_on_category_id"
     t.index ["name"], name: "index_items_on_name"
     t.index ["user_id"], name: "index_items_on_user_id"
