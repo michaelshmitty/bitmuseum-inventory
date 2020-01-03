@@ -21,6 +21,12 @@
           = Item.human_attribute_name(:name)
       = @item.name
 
+    %p
+      %b
+        = succeed ":" do
+          = Item.human_attribute_name(:brand)
+      = @item.brand.name
+
     .row
       .col
         %p

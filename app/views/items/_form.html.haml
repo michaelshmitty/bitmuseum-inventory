@@ -3,7 +3,7 @@
     .col-md
       = f.association :category, include_blank: false
       = f.input :name, as: :string, autofocus: true
-
+      = f.association :brand, include_blank: false
       .row
         .col
           = f.input :year, as: :string
