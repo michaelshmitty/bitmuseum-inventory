@@ -5,3 +5,7 @@ en:
       item:
         id: "ID"
         aasm_state: "State"
+      category:
+        items_count: "# Items"
+      brand:
+        items_count: "# Items"
