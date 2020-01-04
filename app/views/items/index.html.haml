@@ -1,8 +1,21 @@
 %h1= Item.model_name.human.pluralize
 
-.row.my-4.text-right
-  .col
-    = link_to fa_icon("plus", text: "New item"), [:new, :item], class: "btn btn-primary btn-sm"
+.row.my-4
+  .col-lg-10
+    .card
+      .card-body
+        = search_form_for @q, html: {class: "form-inline"} do |f|
+          = f.search_field :name_cont, class: "form-control form-control-sm ml-2", placeholder: "Name contains"
+          = f.search_field :year_cont, class: "form-control form-control-sm ml-2", placeholder: "Year contains"
+          = f.collection_select :brand_id_eq, Brand.order(name: :asc), :id, :name, { prompt: "Brand...", include_blank: true }, { class: "form-control form-control-sm ml-2" }
+          = f.collection_select :category_id_eq, Category.order(name: :asc), :id, :name, { prompt: "Category...", include_blank: true }, { class: "form-control form-control-sm ml-2" }
+          = f.collection_select :owner_id_eq, Owner.order(name: :asc), :id, :name, { prompt: "Owner...", include_blank: true }, { class: "form-control form-control-sm ml-2" }
+
+          = f.button "Search", class: "btn btn-info btn-sm ml-2"
+          = link_to "Clear", items_url, class: "btn btn-secondary btn-sm ml-2"
+
+  .col-lg-2.text-right
+    = link_to fa_icon("plus", text: "New item"), [:new, :item], class: "btn btn-success btn-sm"
 
 .row
   .col
