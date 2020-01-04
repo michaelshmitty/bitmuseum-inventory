@@ -7,9 +7,9 @@
         = search_form_for @q, html: {class: "form-inline"} do |f|
           = f.search_field :name_cont, class: "form-control form-control-sm ml-2", placeholder: "Name contains"
           = f.search_field :year_cont, class: "form-control form-control-sm ml-2", placeholder: "Year contains"
-          = f.collection_select :brand_id_eq, Brand.order(name: :asc), :id, :name, { prompt: "Brand...", include_blank: true }, { class: "form-control form-control-sm ml-2" }
-          = f.collection_select :category_id_eq, Category.order(name: :asc), :id, :name, { prompt: "Category...", include_blank: true }, { class: "form-control form-control-sm ml-2" }
-          = f.collection_select :owner_id_eq, Owner.order(name: :asc), :id, :name, { prompt: "Owner...", include_blank: true }, { class: "form-control form-control-sm ml-2" }
+          = f.collection_select :brand_id_eq, Brand.all, :id, :name, { prompt: "Brand...", include_blank: true }, { class: "form-control form-control-sm ml-2" }
+          = f.collection_select :category_id_eq, Category.all, :id, :name, { prompt: "Category...", include_blank: true }, { class: "form-control form-control-sm ml-2" }
+          = f.collection_select :owner_id_eq, Owner.all, :id, :name, { prompt: "Owner...", include_blank: true }, { class: "form-control form-control-sm ml-2" }
 
           = f.button "Search", class: "btn btn-info btn-sm ml-2"
           = link_to "Clear", items_url, class: "btn btn-secondary btn-sm ml-2"
@@ -23,8 +23,8 @@
 
 .row
   .col
-    %table.table
-      %thead
+    %table.table.table-bordered
+      %thead.thead-light
         %tr
           %th{ scope: "col" }= sort_link(@q, :brand_name, Item.human_attribute_name(:brand))
           %th{ scope: "col" }= sort_link(@q, :name)

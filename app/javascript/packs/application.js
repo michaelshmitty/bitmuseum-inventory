@@ -17,7 +17,7 @@ require("channels")
 // const imagePath = (name) => images(name, true)
 
 import 'bootstrap'
-import '../stylesheets/application';
+import 'bootswatch/dist/sketchy/bootstrap.min.css';
 
 document.addEventListener("turbolinks:load", () => {
   $('[data-toggle="tooltip"]').tooltip()
