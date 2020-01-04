@@ -18,9 +18,7 @@
     = link_to fa_icon("plus", text: "New item"), [:new, :item], class: "btn btn-success btn-sm"
 
 .row
-  .col
-    = paginate @items, theme: 'twitter-bootstrap-4', pagination_class: "justify-content-center"
-  .col-3.text-right.py-2
+  .col.text-right.py-2
     %small= page_entries_info @items
 
 .row
@@ -40,5 +38,3 @@
 .row.mb-5
   .col
     = paginate @items, theme: 'twitter-bootstrap-4', pagination_class: "justify-content-center"
-  .col-3.text-right
-    %small= page_entries_info @items
