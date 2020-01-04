@@ -25,7 +25,7 @@
       = f.button :submit, class: "btn btn-primary"
       = link_to "Cancel", item, class: "btn btn-secondary"
 
-- if item.images.attached?
+- if item.persisted? && item.images.attached?
   %h3.mt-4 Attached images
   .container.bg-light.my-3
     - item.images.in_groups_of(4) do |row_images|
