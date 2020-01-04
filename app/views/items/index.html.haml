@@ -23,8 +23,8 @@
 
 .row
   .col
-    %table.table
-      %thead
+    %table.table.table-bordered
+      %thead.thead-light
         %tr
           %th{ scope: "col" }= sort_link(@q, :brand_name, Item.human_attribute_name(:brand))
           %th{ scope: "col" }= sort_link(@q, :name)

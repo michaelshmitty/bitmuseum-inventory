@@ -5,15 +5,13 @@
     = link_to fa_icon("plus", text: "New brand"), [:new, :brand], class: "btn btn-success btn-sm"
 
 .row
-  .col
-    = paginate @brands, theme: 'twitter-bootstrap-4', pagination_class: "justify-content-center"
-  .col-3.text-right.py-2
+  .col.text-right.py-2
     %small= page_entries_info @brands
 
 .row
   .col
-    %table.table
-      %thead
+    %table.table.table-bordered
+      %thead.thead-light
         %tr
           %th{ scope: "col" }= sort_link(@q, :name)
           %th{ scope: "col" }= sort_link(@q, :items_count)
@@ -24,5 +22,3 @@
 .row.mb-5
   .col
     = paginate @brands, theme: 'twitter-bootstrap-4', pagination_class: "justify-content-center"
-  .col-3.text-right
-    %small= page_entries_info @brands
