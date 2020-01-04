@@ -27,6 +27,12 @@
             = Brand.model_name.human.pluralize
             - if active
               %span.sr-only (current)
+        - active = controller.controller_name == "owners" ? "active" : nil
+        %li.nav-item{ class: active }
+          = link_to :owners, class: "nav-link" do
+            = Owner.model_name.human.pluralize
+            - if active
+              %span.sr-only (current)
 
       %ul.navbar-nav.ml-auto
         %li.nav-item.dropdown

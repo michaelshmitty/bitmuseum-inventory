@@ -2,7 +2,7 @@
 
 .row.my-4.text-right
   .col
-    = link_to fa_icon("plus", text: "New item"), [:new, :item], class: "btn btn-primary"
+    = link_to fa_icon("plus", text: "New item"), [:new, :item], class: "btn btn-primary btn-sm"
 
 .row
   .col
@@ -19,7 +19,7 @@
           %th{ scope: "col" }= sort_link(@q, :name)
           %th{ scope: "col" }= sort_link(@q, :category)
           %th{ scope: "col" }= sort_link(@q, :year)
-          %th{ scope: "col" }= sort_link(@q, :user, )
+          %th{ scope: "col" }= sort_link(@q, :owner)
 
       %tbody
         = render @items

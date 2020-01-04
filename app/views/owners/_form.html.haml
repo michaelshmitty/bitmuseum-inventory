@@ -1,0 +1,10 @@
+= simple_form_for owner do |f|
+  .row
+    .col-4
+      = f.input :name, as: :string, autofocus: true
+      = f.input :contact_information
+
+  .row
+    .col
+      = f.button :submit, class: "btn btn-primary"
+      = link_to "Cancel", owner, class: "btn btn-secondary"

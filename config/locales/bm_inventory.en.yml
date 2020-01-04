@@ -10,3 +10,5 @@ en:
         items_count: "# Items"
       brand:
         items_count: "# Items"
+      owner:
+        items_count: "# Items"

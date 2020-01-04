@@ -1,6 +1,6 @@
 %tr
-  %td= link_to item.brand.name, item.brand
+  %td= item.brand.name
   %td= link_to item.name, item
-  %td= link_to item.category.name, item.category
+  %td= item.category.name
   %td= item.year
-  %td= item.user.first_name
+  %td= item.owner.name

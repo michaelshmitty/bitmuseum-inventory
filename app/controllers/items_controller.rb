@@ -76,6 +76,7 @@ class ItemsController < ApplicationController
       require(:item).
       permit(:category_id,
              :brand_id,
+             :owner_id,
              :name,
              :description,
              :year,
