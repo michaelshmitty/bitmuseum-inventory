@@ -39,3 +39,5 @@ spec/examples.txt
 TODO
 
 /config/credentials/production.key
+
+/config/credentials/development.key

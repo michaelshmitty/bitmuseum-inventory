@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_03_223423) do
+ActiveRecord::Schema.define(version: 2020_01_04_123306) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,11 +64,21 @@ ActiveRecord::Schema.define(version: 2020_01_03_223423) do
     t.text "location"
     t.string "aasm_state"
     t.integer "brand_id", null: false
+    t.integer "owner_id", null: false
     t.index ["aasm_state"], name: "index_items_on_aasm_state"
     t.index ["brand_id"], name: "index_items_on_brand_id"
     t.index ["category_id"], name: "index_items_on_category_id"
     t.index ["name"], name: "index_items_on_name"
+    t.index ["owner_id"], name: "index_items_on_owner_id"
     t.index ["user_id"], name: "index_items_on_user_id"
+  end
+
+  create_table "owners", force: :cascade do |t|
+    t.text "name", default: "", null: false
+    t.text "contact_information"
+    t.integer "items_count", default: 0, null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -97,5 +107,6 @@ ActiveRecord::Schema.define(version: 2020_01_03_223423) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "items", "brands"
   add_foreign_key "items", "categories"
+  add_foreign_key "items", "owners"
   add_foreign_key "items", "users"
 end

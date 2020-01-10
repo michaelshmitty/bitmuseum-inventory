@@ -1,0 +1,32 @@
+.row.mb-5
+  .col-8
+    %h1= @owner.name
+
+  .col.text-right.pt-3
+    - if policy(@owner).edit?
+      = link_to fa_icon("pen", text: "Edit"), [:edit, @owner], class: "btn btn-warning btn-sm"
+    - if policy(@owner).destroy?
+      = link_to fa_icon("trash", text: "Delete"), @owner, class: "btn btn-danger btn-sm", method: :delete, data: { confirm: "Are you sure?" }
+
+.row.mb-3
+  .col
+    %p
+      %b
+        = succeed ":" do
+          = Owner.human_attribute_name(:contact_information)
+      = @owner.contact_information
+
+%h2= Item.model_name.human.pluralize
+.row
+  .col
+    %table.table
+      %thead
+        %tr
+          %th{ scope: "col" }= Item.human_attribute_name(:name)
+          %th{ scope: "col" }= Item.human_attribute_name(:year)
+
+      %tbody
+        - @owner.items.each do |item|
+          %tr
+            %td= link_to item.name, item
+            %td= item.year

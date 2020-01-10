@@ -1,0 +1,24 @@
+%h1= Owner.model_name.human.pluralize
+
+.row.my-4.text-right
+  .col
+    = link_to fa_icon("plus", text: "New owner"), [:new, :owner], class: "btn btn-success btn-sm"
+
+.row
+  .col.text-right.py-2
+    %small= page_entries_info @owners
+
+.row
+  .col
+    %table.table.table-bordered
+      %thead.thead-light
+        %tr
+          %th{ scope: "col" }= sort_link(@q, :name)
+          %th{ scope: "col" }= sort_link(@q, :items_count)
+
+      %tbody
+        = render @owners
+
+.row.mb-5
+  .col
+    = paginate @owners, theme: 'twitter-bootstrap-4', pagination_class: "justify-content-center"

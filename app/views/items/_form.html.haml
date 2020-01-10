@@ -1,9 +1,9 @@
 = simple_form_for item do |f|
   .row
     .col-md
-      = f.association :category, include_blank: false
+      = f.association :category, prompt: "Choose..."
       = f.input :name, as: :string, autofocus: true
-      = f.association :brand, include_blank: false
+      = f.association :brand, prompt: "Choose..."
       .row
         .col
           = f.input :year, as: :string
@@ -15,6 +15,7 @@
 
     .col-md
       = f.input :aasm_state, as: :select, collection: Item.aasm.states.map(&:name).map(&:to_s), label_method: :titleize, include_blank: false
+      = f.association :owner, prompt: "Choose..."
       = f.input :location, as: :string
       = f.input :description, input_html: { rows: 8 }, hint: "Markdown supported"
 
@@ -24,7 +25,7 @@
       = f.button :submit, class: "btn btn-primary"
       = link_to "Cancel", item, class: "btn btn-secondary"
 
-- if item.images.attached?
+- if item.persisted? && item.images.attached?
   %h3.mt-4 Attached images
   .container.bg-light.my-3
     - item.images.in_groups_of(4) do |row_images|
