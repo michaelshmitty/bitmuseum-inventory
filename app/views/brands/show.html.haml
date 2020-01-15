@@ -2,7 +2,7 @@
   .col-8
     %h1= @brand.name
 
-  .col.text-right.pt-3
+  .col.text-right.pt-2
     - if policy(@brand).edit?
       = link_to fa_icon("pen", text: "Edit"), [:edit, @brand], class: "btn btn-warning btn-sm"
     - if policy(@brand).destroy?
