@@ -1,7 +1,12 @@
-%h1= Item.model_name.human.pluralize
+.row.mb-3
+  .col
+    %h1= Item.model_name.human.pluralize
 
-.row.my-4
-  .col-lg-10
+  .col.text-right.pt-2
+    = link_to fa_icon("plus", text: "New item"), [:new, :item], class: "btn btn-success btn-sm"
+    
+.row.my-2
+  .col-lg
     .card
       .card-body
         = search_form_for @q, html: {class: "form-inline"} do |f|
@@ -13,9 +18,6 @@
 
           = f.button "Search", class: "btn btn-info btn-sm ml-2"
           = link_to "Clear", items_url, class: "btn btn-secondary btn-sm ml-2"
-
-  .col-lg-2.text-right
-    = link_to fa_icon("plus", text: "New item"), [:new, :item], class: "btn btn-success btn-sm"
 
 .row
   .col.text-right.py-2
