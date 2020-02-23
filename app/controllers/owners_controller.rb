@@ -32,7 +32,7 @@ class OwnersController < ApplicationController
     authorize @owner
 
     if @owner.save
-      redirect_to @owner
+      redirect_to :owners
     else
       render :new
     end

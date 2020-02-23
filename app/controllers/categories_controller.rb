@@ -32,7 +32,7 @@ class CategoriesController < ApplicationController
     authorize @category
 
     if @category.save
-      redirect_to @category
+      redirect_to :categories
     else
       render :new
     end

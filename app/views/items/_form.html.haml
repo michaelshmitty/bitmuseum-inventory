@@ -1,9 +1,9 @@
 = simple_form_for item do |f|
   .row
     .col-md
-      = f.association :category, prompt: "Choose..."
+      = f.association :category, prompt: "Choose...", collection: Category.order(:name)
       = f.input :name, as: :string, autofocus: true
-      = f.association :brand, prompt: "Choose..."
+      = f.association :brand, prompt: "Choose...", collection: Brand.order(:name)
       .row
         .col
           = f.input :year, as: :string
@@ -15,10 +15,16 @@
 
     .col-md
       = f.input :aasm_state, as: :select, collection: Item.aasm.states.map(&:name).map(&:to_s), label_method: :titleize, include_blank: false
-      = f.association :owner, prompt: "Choose..."
+      = f.association :owner, prompt: "Choose...", collection: Owner.order(:name)
       = f.input :location, as: :string
       = f.input :description, input_html: { rows: 8 }, hint: "Markdown supported"
 
+  .row
+    .col-md
+      %h1 Links
+      - current_user.items.linkable_to(item).group_by(&:category).each do |category, categorized_items|
+        %h4= category.name
+        = f.association :linked_items, collection: categorized_items, as: :check_boxes, label: ''
   %hr
   .row
     .col

@@ -10,6 +10,7 @@ RSpec.describe Item, type: :model do
     it { should have_db_column(:authenticity).of_type(:string) }
     it { should have_db_column(:location).of_type(:text) }
     it { should have_db_column(:aasm_state).of_type(:string) }
+    it { should have_db_column(:item_links_count).of_type(:integer).with_options(default: 0, null: false) }
   end
 
   describe 'database indexes' do
