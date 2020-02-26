@@ -11,6 +11,9 @@ class ItemsController < ApplicationController
   def show
     @item = Item.find(params[:id])
     authorize @item
+    @linked_items = @item.linked_items.includes(:category)
+                                      .order('categories.name')
+                                      .order('items.name')
     add_breadcrumb @item.name, @item
   end
 
@@ -85,7 +88,8 @@ class ItemsController < ApplicationController
              :authenticity,
              :location,
              :aasm_state,
-             images: []
+             images: [],
+             linked_item_ids: []
       )
   end
 end

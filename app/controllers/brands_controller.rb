@@ -32,7 +32,7 @@ class BrandsController < ApplicationController
     authorize @brand
 
     if @brand.save
-      redirect_to @brand
+      redirect_to :brands
     else
       render :new
     end

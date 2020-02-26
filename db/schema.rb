@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_04_123306) do
+ActiveRecord::Schema.define(version: 2020_02_23_093728) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,16 @@ ActiveRecord::Schema.define(version: 2020_01_04_123306) do
     t.integer "items_count", default: 0, null: false
   end
 
+  create_table "item_links", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "item_id"
+    t.bigint "linked_item_id"
+    t.index ["item_id", "linked_item_id"], name: "index_item_links_on_item_id_and_linked_item_id", unique: true
+    t.index ["item_id"], name: "index_item_links_on_item_id"
+    t.index ["linked_item_id"], name: "index_item_links_on_linked_item_id"
+  end
+
   create_table "items", force: :cascade do |t|
     t.text "name", default: "", null: false
     t.text "description"
@@ -65,6 +75,7 @@ ActiveRecord::Schema.define(version: 2020_01_04_123306) do
     t.string "aasm_state"
     t.integer "brand_id", null: false
     t.integer "owner_id", null: false
+    t.integer "item_links_count", default: 0, null: false
     t.index ["aasm_state"], name: "index_items_on_aasm_state"
     t.index ["brand_id"], name: "index_items_on_brand_id"
     t.index ["category_id"], name: "index_items_on_category_id"

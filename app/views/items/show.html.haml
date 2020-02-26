@@ -1,6 +1,6 @@
 .row.mb-3
   .col-8
-    %h1= Item.model_name.human
+    %h1= @item.name
   .col.text-right.pt-3
     - if policy(@item).edit?
       = link_to fa_icon("pen", text: "Edit"), [:edit, @item], class: "btn btn-warning btn-sm"
@@ -14,12 +14,6 @@
         = succeed ":" do
           = Item.human_attribute_name(:category)
       = @item.category.name
-
-    %p
-      %b
-        = succeed ":" do
-          = Item.human_attribute_name(:name)
-      = @item.name
 
     %p
       %b
@@ -38,7 +32,7 @@
           %b
             = succeed ":" do
               = Item.human_attribute_name(:authenticity)
-          = @item.authenticity.titleize
+          = @item.authenticity.try(:titleize)
       .col
         %p
           %b
@@ -68,6 +62,24 @@
           = Item.human_attribute_name(:description)
       - if @item.description.present?
         = GitHub::Markup.render_s(GitHub::Markups::MARKUP_MARKDOWN, @item.description).html_safe
+
+
+.row
+  .col-md
+    %h2 Links
+    - @linked_items.group_by(&:category).each do |category, categorized_items|
+      %h4= category.name
+      %table.table.table-bordered.table-sm
+        %thead.thead-light
+          %tr
+            %th{ scope: "col" }= Item.human_attribute_name(:name)
+            %th{ scope: "col" }= Item.human_attribute_name(:brand)
+
+        %tbody
+          - categorized_items.each do |linked_item|
+            %tr
+              %td= link_to linked_item.name, linked_item
+              %td= linked_item.brand.name
 
 .container.bg-light.my-3
   - @item.images.in_groups_of(4) do |row_images|
