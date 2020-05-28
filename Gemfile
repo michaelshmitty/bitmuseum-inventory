@@ -13,7 +13,7 @@ gem 'bootsnap', '>= 1.4.2', require: false
 gem 'pg', '~> 1.1.4'
 gem 'devise', '~> 4.7.1'
 gem 'simple_form', '~> 5.0.1'
-gem 'kaminari', '~> 1.1.1'
+gem 'kaminari', '~> 1.2.1'
 gem 'bootstrap-kaminari-views', git: 'https://github.com/kalashnikovisme/bootstrap-kaminari-views.git'
 gem 'ransack', github: 'activerecord-hackery/ransack'
 gem 'pundit', '~> 2.1.0'
