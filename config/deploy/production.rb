@@ -1,3 +1,3 @@
-role :app, %w(rails@naboo)
-role :web, %w(rails@naboo)
-role :db,  %w(rails@naboo)
+role :app, %w(rails@endor)
+role :web, %w(rails@endor)
+role :db,  %w(rails@endor)
