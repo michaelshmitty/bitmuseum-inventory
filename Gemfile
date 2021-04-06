@@ -24,6 +24,7 @@ gem 'github-markup'
 gem 'aws-sdk-s3', require: false
 gem 'image_processing', '~> 1.2'
 gem 'exception_notification'
+gem 'mimemagic'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
