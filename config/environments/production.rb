@@ -128,12 +128,10 @@ Rails.application.configure do
 
   # NOTE(m): ActionMailer configuration
   config.action_mailer.smtp_settings = {
-    port: Rails.application.credentials.mailgun[:smtp_port],
-    address: Rails.application.credentials.mailgun[:smtp_server],
-    user_name: Rails.application.credentials.mailgun[:smtp_login],
-    password: Rails.application.credentials.mailgun[:smtp_password],
-    domain: Rails.application.credentials.mailgun[:smtp_domain],
-    authentication: :plain,
+    address: Rails.application.credentials.vlotmail[:smtp_server],
+    port: Rails.application.credentials.vlotmail[:smtp_port],
+    enable_starttls_auto: true,
+    domain: Rails.application.credentials.vlotmail[:smtp_domain]
   }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.default_url_options = { host: Rails.application.credentials.default_url_host }
